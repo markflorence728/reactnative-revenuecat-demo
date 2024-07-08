@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet, ActivityIndicator} from 'react-native';
 import Header from '../components/Header';
 import Button from '../components/Button';
-import {getPurchaserInfo, purchaseProduct} from '../services/revenueCat';
+import {getCustomerInfo, purchaseProduct} from '../services/revenueCat';
 
 const HomeScreen: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -10,7 +10,7 @@ const HomeScreen: React.FC = () => {
 
   useEffect(() => {
     const fetchPurchaserInfo = async () => {
-      const info = await getPurchaserInfo();
+      const info = await getCustomerInfo();
       setPurchaserInfo(info);
       setLoading(false);
     };

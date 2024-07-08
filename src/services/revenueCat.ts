@@ -1,17 +1,39 @@
 import Purchases from 'react-native-purchases';
 
+/**
+ * Configures RevenueCat with the provided API key.
+ */
 const configureRevenueCat = () => {
   Purchases.setDebugLogsEnabled(true);
   Purchases.configure({apiKey: 'your_revenuecat_api_key'});
 };
 
-const getPurchaserInfo = async () => {
+/**
+ * Fetches the cusomter info.
+ *
+ * @returns The customer info if available.
+ */
+const getCustomerInfo = async () => {
   try {
-    const purchaserInfo = await Purchases.getCustomerInfo();
-    return purchaserInfo;
+    const customerInfo = await Purchases.getCustomerInfo();
+    return customerInfo;
   } catch (e) {
-    console.error('Failed to get purchaser info:', e);
+    console.error('Failed to get customer info:', e);
   }
 };
 
-export {configureRevenueCat, getPurchaserInfo};
+/**
+ * Makes a purchase.
+ *
+ * @param productId The product identifier.
+ */
+const purchaseProduct = async (productId: string) => {
+  try {
+    const {customerInfo} = await Purchases.purchaseProduct(productId);
+    return customerInfo;
+  } catch (e) {
+    console.error('Failed to make purchase:', e);
+  }
+};
+
+export {configureRevenueCat, getCustomerInfo, purchaseProduct};
