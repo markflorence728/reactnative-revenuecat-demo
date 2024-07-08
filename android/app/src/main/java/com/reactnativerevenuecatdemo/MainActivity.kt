@@ -22,6 +22,13 @@ class MainActivity : ReactActivity() {
   override fun createReactActivityDelegate(): ReactActivityDelegate =
       DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
 
+  /**
+   * Called when the activity is first created. This is where you should initialize RevenueCat.
+   * 
+   * @param savedInstanceState If the activity is being re-initialized after previously being
+   *                           shut down then this Bundle contains the data it most recently
+   *                           supplied in onSaveInstanceState(Bundle). Note: Otherwise it is null.
+   */
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // Initialize RevenueCat with your API key
