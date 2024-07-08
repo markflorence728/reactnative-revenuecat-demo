@@ -17,6 +17,8 @@ end
 target 'reactnativerevenuecatdemo' do
   config = use_native_modules!
 
+  pod 'Purchases'
+
   use_react_native!(
     :path => config[:reactNativePath],
     # An absolute path to your application root.
